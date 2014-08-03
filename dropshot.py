@@ -201,6 +201,12 @@ def post_players():
     input_password = request.forms.get('password')
     input_email = request.forms.get('email')
 
+    if (input_username is None or
+        input_password is None or
+        input_email    is None):
+        response.status = 400
+        return {'error': 'NEEDDATA'}
+
     playerQuery = models.session.query(models.Player).\
         filter(or_(models.Player.username == input_username,
                    models.Player.email == input_email))
