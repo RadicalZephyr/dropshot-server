@@ -9,7 +9,7 @@ def create_player(username, password, email):
               'password': password,
               'email': email}
 
-    r = requests.post(url, params=values, verify=False)
+    r = requests.post(url, data=values, verify=False)
 
     r.raise_for_status()
 
